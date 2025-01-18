@@ -6,3 +6,5 @@
      ansible.builtin.package: #heterongenous module that can work for all distros
       name: nginx              #required Package name, or package specifier with version
       state: present           #required Whether to install (present), or remove (absent) a package.You can use other states like latest 
+     ansible.builtin.debug:
+      msg: "nginx is installed"
