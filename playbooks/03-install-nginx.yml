@@ -7,7 +7,7 @@
       name: nginx              #required Package name, or package specifier with version
       state: present           #required Whether to install (present), or remove (absent) a package.You can use other states like latest
 
-   - name: run nginx service 
+   - name: run nginx  
      ansible.builtin.service:     # (search for ansible to run a service)
       name: start nginx    #Name of the service. required paramenter
       state: started       #started/stopped are idempotent actions that will not run commands unless necessary. At least one of state and enabled are required.
