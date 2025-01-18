@@ -42,4 +42,4 @@ The server pushes updates to clients whenever there is new data or changes. This
 - **Complex Implementation:** The server needs to manage and track connections with clients, which can be challenging.
 - **Notification Overload:** Clients may receive too many notifications or updates, which can overwhelm them if not managed properly.
 
-![Pull Architecture and Push Architecture](pushvspullarch.svg)
+![Pull Architecture and Push Architecture](.assets/pushvspullarch.svg)
