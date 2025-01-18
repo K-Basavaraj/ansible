@@ -4,11 +4,11 @@
   tasks: 
    - name: PLAY-01 TASK-01 
      ansible.builtin.debug:    #ansible.builtin.debug module – Print statements during execution
-       msg: "This is from PLAY-01 AND TASK-01"
+      msg: "This is from PLAY-01 AND TASK-01"
 
 - name: PLAY-02 
   hosts: backend
   tasks: 
    - name: PLAY-02 TASK02
      ansible.builtin.debug:
-      msg:"This is from PLAY-02 AND TASK-02"
+      msg: "This is from PLAY-02 AND TASK-02"
