@@ -3,10 +3,11 @@
   become: yes  #take sudo access
   tasks:  
    - name: install nginx 
-     ansible.builtin.package: #heterongenous module that can work for all distros
+     ansible.builtin.package: #heterongenous module that can work for all distros ( serach for ansible install package )
       name: nginx              #required Package name, or package specifier with version
       state: present           #required Whether to install (present), or remove (absent) a package.You can use other states like latest
 
-   - name: Confirm nginx installation
-     ansible.builtin.debug:
-      msg: "nginx is installed"
+   - name: run the nginx service 
+     ansible.builtin.service:     # (search for ansible to run a service)
+      name: start nginx    #Name of the service. required paramenter
+      state: started       #started/stopped are idempotent actions that will not run commands unless necessary. At least one of state and enabled are required.
