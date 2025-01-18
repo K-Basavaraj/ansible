@@ -20,7 +20,7 @@
 # Playbook to ping the servers in 'database' and 'backend' groups
 
 - name: ping the server 
-  hosts: backend,databases        # Target groups defined in the inventory file
+  hosts: backend,database        # Target groups defined in the inventory file
   tasks: 
   - name: ping the server
     ansible.builtin.ping
