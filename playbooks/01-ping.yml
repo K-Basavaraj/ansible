@@ -1,0 +1,26 @@
+# This playbook is used to test connectivity to a server using the Ansible ping module.
+
+# - name: ping the server         
+#   hosts: hosts           # Specify the server or group of servers to connect (e.g., 'web', 'db', 'all').  
+#   tasks: # List of tasks to execute on the specified hosts
+#   - name: ping the server
+#     ansible.builtin.ping: # The Ansible ping module checks connectivity, verifies Python, and returns 'pong' if successful.
+
+
+# Purpose of the Playbook:
+# This playbook is designed to verify connectivity to the target servers.
+# The ansible.builtin.ping module ensures that the target servers are reachable and have Python installed.
+
+# Explanation of Components:
+# hosts: Indicates the target hosts or group defined in the inventory file. 
+# tasks: Contains a list of actions to perform.
+# ansible.builtin.ping: A module used to test the connection to the host. It does not perform a traditional network
+#ping but ensures that Ansible can communicate with the host using SSH.
+#==================================================================================================================
+# Playbook to ping the servers in 'database' and 'backend' groups
+
+- name: ping the server 
+  hosts: backend,databases        # Target groups defined in the inventory file
+  tasks: 
+  - name: ping the server
+    ansible.builtin.ping
