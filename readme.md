@@ -42,4 +42,12 @@ The server pushes updates to clients whenever there is new data or changes. This
 - **Complex Implementation:** The server needs to manage and track connections with clients, which can be challenging.
 - **Notification Overload:** Clients may receive too many notifications or updates, which can overwhelm them if not managed properly.
 
-![Pull Architecture and Push Architecture](pushvspullarch.svg)
+### Tools in Push Architecture
+Tools like **Ansible** are a good example of a push-based architecture. They automatically initiate updates and configurations, so users don't have to keep checking for changes. Ansible uses protocols like **SSH** to perform these updates.
+
+**Note:** Pull-based architectures, on the other hand, do not use SSH-based protocols to fetch updates.
+
+### Evolution of Ansible
+In the past, Ansible was only used in a push-based manner, meaning it would initiate updates. However, Ansible has recently introduced support for **pull-based architecture** as well, allowing it to fetch configurations and updates when needed. This addition gives users more flexibility in how they manage updates.
+
+Refer to the image for comparison: ./pushvspullarch.svg
