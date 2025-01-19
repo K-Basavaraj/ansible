@@ -3,4 +3,4 @@
   tasks:
    - name: user info 
      debug: 
-      msg: "{{ MESSAGE }}"
+      msg: "my name is {{ NAME }}, My age is {{ AGE }}, I am an {{ JOB }}"
