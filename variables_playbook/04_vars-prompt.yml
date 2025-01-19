@@ -1,17 +1,17 @@
 - name: varibles form prompt     #like read command in shell
   hosts: web 
   vars_prompt: 
-  - name: NAME
-    prompt: "ENTER YOUR NAME: "
-    private: false                #this is visable to user if its not confidential 
+   - name: NAME
+     prompt: "ENTER YOUR NAME: "
+     private: false                #this is visable to user if its not confidential 
   
-  - age: AGE
-    prompt: "ENTER YOU AGE: "
-    private: false 
+   - age: AGE
+     prompt: "ENTER YOU AGE: "
+     private: false 
 
-  - job: JOB
-    prompt: "ENTER YOUR JOB: "
-    private: false 
+   - job: JOB
+     prompt: "ENTER YOUR JOB: "
+     private: false 
   
   tasks:
    - name: user info
