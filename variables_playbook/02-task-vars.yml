@@ -4,17 +4,29 @@
     NAME: "RAJ"
     AGE: 27
     JOB: "ENGINEER"
+    MESSAGE: "my name is {{ NAME }}, My age is {{ AGE }}, I am an {{ JOB }}"
+
   tasks: #list of tasks 
    - name: print user info
      debug: 
-      msg: "my name is {{ NAME }}, My age is {{ AGE }}, I am an {{ JOB }}"
+      msg: "my name is {{ NAME }}, My age is {{ AGE }}, I am an {{ JOB }}"  #like this we can decalre or 
 
    - name: Print user2 info
      vars:  #task level variables override play level
-      NAME: "Ramesh"
+      NAME: "Ramesh" 
       JOB: "Doctor"
      debug:
-      msg: "my name is {{ NAME }}, My age is {{ AGE }}, I am a {{ JOB }}"
+      msg: "{{MESSAGE}}"   #like this also we can make it
+
+   - name: print user3 info
+     vars:          # Overriding NAME, leaving JOB as default (ENGINEER)
+      NAME: "Balaji"
+     debug:
+      msg: "{{MESSAGE}}"
+
+
+# The variable MESSAGE is defined at the play level, and it contains a string with placeholders for NAME, AGE, and JOB.
+# In tasks, {{ MESSAGE }} is evaluated, and the placeholders are replaced with the corresponding variable values.
 
 #output:
 # TASK [print user info] *
