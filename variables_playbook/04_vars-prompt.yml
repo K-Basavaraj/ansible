@@ -2,15 +2,15 @@
   hosts: web 
   vars_prompt: 
    - name: NAME
-     prompt: "ENTER YOUR NAME: "
+     prompt: "ENTER YOUR NAME "
      private: false                #this is visable to user if its not confidential 
   
    - name: AGE
-     prompt: "ENTER YOU AGE: "
+     prompt: "ENTER YOU AGE "
      private: false 
 
    - name: JOB
-     prompt: "ENTER YOUR JOB: "
+     prompt: "ENTER YOUR JOB "
      private: false 
   
   tasks:
