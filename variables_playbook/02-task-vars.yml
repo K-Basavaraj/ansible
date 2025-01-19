@@ -1,0 +1,17 @@
+- name: variables to print 
+  host: web 
+  vars:   #play level, all tasks in this play have access to this
+   NAME: "RAJ"
+   AGE: 27
+   JOB: "ENGINEER"
+  taks: #list of tasks 
+   - name: print user info
+     debug: 
+      msg: "my name is {{NAME}}, My age is {{AGE}}, I am an {{JOB}}"
+
+   - name: Print user2 info
+     vars:  #task level variables override play level
+      NAME: "Ramesh"
+      JOB: "Doctor"
+     debug:
+      msg: "my name is {{NAME}}, My age is {{AGE}}, I am an {{JOB}}"
