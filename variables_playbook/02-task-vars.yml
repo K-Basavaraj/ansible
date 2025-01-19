@@ -15,3 +15,9 @@
       JOB: "Doctor"
      debug:
       msg: "my name is {{ NAME }}, My age is {{ AGE }}, I am a {{ JOB }}"
+
+#output:
+# TASK [print user info] *
+#     "msg": "my name is RAJ, My age is 27, I am an ENGINEER"
+# TASK [Print user2 info] 
+# "msg": "my name is Ramesh, My age is 27, I am a Doctor"
