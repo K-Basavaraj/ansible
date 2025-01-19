@@ -17,3 +17,15 @@
    - name: user info
      debug:
       msg: "my name is {{ NAME }}, My age is {{ AGE }}, I am an {{ JOB }}"
+
+# The 'name' key is used to define the variable that will store the user's input.
+# The value of 'name' (e.g., NAME, AGE, JOB) is the actual variable used in tasks after the prompt.
+# We can't use 'age' or other names as keys in vars_prompt because Ansible expects the key 'name' to define the variable.
+
+#output: 
+# ENTER YOUR NAME : Raj
+# ENTER YOU AGE : 27
+# ENTER YOUR JOB : engineer
+
+# output: "msg": "my name is Raj, My age is 27, I am an engineer"
+
