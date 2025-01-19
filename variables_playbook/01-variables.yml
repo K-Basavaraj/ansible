@@ -1,6 +1,17 @@
+# - name: variables to print 
+#   hosts: web 
+#   tasks:
+#    - name: print the information 
+#      debug: 
+#       msg: "Hi my name is Raj, age is 27, I am an engineer"
+
 - name: variables to print 
   hosts: web 
+  vars: 
+    NAME: RAJ
+    AGE: 27
+    JOB: Engineer
   tasks:
    - name: print the information 
      debug: 
-      msg: "Hi my name is Raj, age is 27, I am an engineer"
+      msg: "Hi my name is {{NAME}}, age is {{AGE}}, I am an {{JOB}}"
