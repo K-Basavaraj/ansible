@@ -1,0 +1,6 @@
+- name: vars from inventory
+  hosts: web
+  tasks:
+   - name: user info 
+     debug: 
+      msg: "{{ MESSAGE }}"
