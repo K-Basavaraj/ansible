@@ -4,3 +4,7 @@
    - name: vars args
      ansible.builtin.debug: 
       msg: "Hello {{NAME}}, Good {{GREATING}}"
+
+
+#ansible-playbook -i ../inventory/inventory.ini -e ansible_user=ec2-user -e ansible_password=DevOps321 06_vars_from_args.yml -e "NAME=RAJESH GREATING=MORNING!"
+#output: "msg": "Hello RAJESH, Good MORNING!"
