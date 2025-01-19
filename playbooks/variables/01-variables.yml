@@ -2,5 +2,5 @@
   hosts: web 
   tasks:
    - name: print the information 
-      - debug: 
-         msg: "Hi my name is Raj, age is 27, I am an engineer"
+     debug: 
+      msg: "Hi my name is Raj, age is 27, I am an engineer"
