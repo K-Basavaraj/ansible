@@ -14,4 +14,4 @@
       NAME: "Ramesh"
       JOB: "Doctor"
      debug:
-      msg: "my name is {{ NAME }}, My age is {{ AGE }}, I am an {{ JOB }}"
+      msg: "my name is {{ NAME }}, My age is {{ AGE }}, I am a {{ JOB }}"
