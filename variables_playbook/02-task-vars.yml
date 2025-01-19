@@ -33,3 +33,6 @@
 #     "msg": "my name is RAJ, My age is 27, I am an ENGINEER"
 # TASK [Print user2 info] 
 # "msg": "my name is Ramesh, My age is 27, I am a Doctor"
+# TASK [print user3 info] 
+#     "msg": "my name is Balaji, My age is 27, I am an ENGINEER"
+
