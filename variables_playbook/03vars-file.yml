@@ -1,0 +1,8 @@
+- name: variables to print 
+  hosts: web 
+  vars_files:   
+   - ../vars/vars.yml
+  tasks:
+   - name: user info
+     debug:
+      msg: "{{ MESSAGE }}"

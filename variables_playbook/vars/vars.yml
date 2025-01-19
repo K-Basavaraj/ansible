@@ -1,0 +1,4 @@
+    NAME: "RAJ"
+    AGE: 27
+    JOB: "ENGINEER"
+    MESSAGE: "my name is {{ NAME }}, My age is {{ AGE }}, I am an {{ JOB }}"
