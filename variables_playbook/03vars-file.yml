@@ -6,3 +6,7 @@
    - name: user info
      debug:
       msg: "{{ MESSAGE }}"
+
+
+# TASK [user info] 
+#     "msg": "my name is RAJ, My age is 27, I am an ENGINEER"
