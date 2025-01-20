@@ -11,6 +11,6 @@
      ansible.builtin.debug: 
       msg: " user info: {{ USER }}"
   
-  #  - name: if not exit create 
-  #    ansible.builtin.command: useradd expense 
-  #    when: USER.rc != 0  #here rc is a exit status if its 0 sucess if its 1 its failed
+   - name: if not exit create 
+     ansible.builtin.command: useradd expense 
+     when: USER.rc != 0  #here rc is a exit status if its 0 sucess if its 1 its failed
