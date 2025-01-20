@@ -1,4 +1,4 @@
-- name: Check the given number is greater or lessthan 100
+- name: Check the given number is greater or less than 100
   hosts: local
   conection: local
   vars:
@@ -11,8 +11,10 @@
     - name: print this if less than 100
       ansible.builtin.debug:
         msg: your given number {{ NUMBER }} is less than 100
-      when: NUMBER | int <  {{ num }}
+      when: NUMBER | int < num
     - name: print this if greater than your number
       ansible.builtin.debug:
         msg: your given number {{ NUMBER }} is greater than 100
-      when: NUMBER | int >= {{ num }}
+      when: NUMBER | int >= num 
+
+
