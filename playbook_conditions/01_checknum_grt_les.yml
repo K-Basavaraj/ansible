@@ -1,6 +1,6 @@
 - name: Check the given number is greater or less than 100
   hosts: local
-  conection: local
+  connection: local
   vars:
     num: 100
   vars_prompt:
