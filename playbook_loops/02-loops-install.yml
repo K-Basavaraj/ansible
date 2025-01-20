@@ -2,11 +2,11 @@
   hosts: web 
   become: yes 
   tasks: 
-   - name: install packages 
-     ansible.builtin.packages:
+  - name: install packages 
+    ansible.builtin.packages:
       name: "{{ item }}"
       state: present 
-     loop:
+    loop:
       - nginx 
       - mysql
       - postfix 
