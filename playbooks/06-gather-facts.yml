@@ -1,0 +1,7 @@
+- name: gather server fact
+  hosts: web 
+  become: yes
+  tasks: 
+   - name: print the facts
+     ansible.builtin.debug:
+      msg: "{{ ansible_facts }}"
