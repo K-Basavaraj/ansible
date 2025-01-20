@@ -1,0 +1,19 @@
+- name: Check the given number is greater or lessthan 100
+  hosts: local 
+  conection: local 
+  vars:
+   num: 100
+  vars_prompt: 
+    - name: NUMBER 
+      prompt: "Please enter your number"
+      private: false 
+  tasks: 
+   - name: print this if less than 100
+     ansible.builtin.debug:
+      msg: "your given number {{ NUMBER }} is less than 100"
+     when: NUMBER | int <  {{ num }}
+   
+   - name: print this if greater than your number
+     ansible.builtin.debug:
+      msg: "your given number {{ NUMBER }} is greater than 100"
+     when: NUMBER | int >= {{ num }} 
