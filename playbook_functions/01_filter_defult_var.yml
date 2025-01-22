@@ -4,4 +4,4 @@
   tasks:
    - name: print the defult varaible
      ansible.builtin.debug:
-      msg: "Hello {{ course | defult('Ansible') }}"
+      msg: "Hello {{ course | default('Ansible') }}"
