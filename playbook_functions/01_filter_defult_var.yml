@@ -17,3 +17,10 @@
       greetings: "RaMesh"
      ansible.builtin.debug:
       msg: "Hello {{ greetings | lower }}" #here lower is function
+
+  - name: To get a unique set from a list
+     vars:
+      list1: [1, 2, 5, 1, 3, 4, 10]
+     ansible.builtin.debug:
+      msg: "here is the unique {{ list1 | unique }}" #here unique function
+    
