@@ -28,6 +28,6 @@
      ansible.builtin.shell: ps -ef | grep ssh
      register: output   # it will sucess because using shell where it have access pipe |
 
-  - name: check the process
-    ansible.builtin.command: ps -ef | grep ssh
-    register: output   # it will faill beasue here pipe | is used dont have access
+   - name: check the process
+     ansible.builtin.command: ps -ef | grep ssh
+     register: output   # it will faill beasue here pipe | is used dont have access
