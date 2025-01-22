@@ -24,3 +24,10 @@
      ansible.builtin.debug:
       msg: "here is the unique {{ list1 | unique }}" #here unique function
     
+   - name: to find min and max from two lists 
+     vars: 
+      lista: [2, 7, 9, 87, 56, 56, 0]
+      listb: [6, 7, 10, 99, 105, 705, 0, 23]
+     ansible.builtin.debug:
+      msg: "min value in firstlist {{ lista | min }}, max value in second list {{ listb | max }}"
+      
