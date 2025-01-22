@@ -47,4 +47,4 @@
        - { "key": "color","value": "Red" }
        - { "key": "count","value": 12 }
      ansible.builtin.debug:
-      msg: "{{ fruits | dict2items }}" #here also dict2iteams will convert list to map 
+      msg: "{{ fruits | items2dict }}" #items2dict will convert list to map 
