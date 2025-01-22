@@ -17,4 +17,9 @@
    - name: print the info 
      ansible.builtin.debug: 
       msg: "status: {{ command_redi }}" # this is fail beacuse used redirectors is used by shell not command.
-   
+      #"rc": 2, "start": "2025-01-22 17:08:24.695481", "stderr": "ls: cannot access '>'
+  
+   - name: execute the shell 
+     ansible.builtin.shell: ls -ltr /home/ec2-user/practice > output.txt
+     register: command_redi # it will work as login to the server and execute command inside
+    # command module, just issues the command
