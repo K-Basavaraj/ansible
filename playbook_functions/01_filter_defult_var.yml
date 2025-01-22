@@ -48,3 +48,9 @@
        - { "key": "count","value": 12 }
      ansible.builtin.debug:
       msg: "{{ fruit | items2dict }}" #items2dict will convert list to map 
+
+   - name: checkip 
+     vars: 
+       myip: "356.168.1.1"
+     ansible.builtin.debug:
+      msg: "{{ myip | ansible.utils.ipv4 }}" #checks its ipv4 or not ansible.utils.ipv4 if not it will show false
