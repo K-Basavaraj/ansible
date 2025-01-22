@@ -6,7 +6,7 @@
      ansible.builtin.command: ls -ltr /home/ec2-user/practice
      register: command
     
-   - name: print the user info 
+   - name: print the info 
      ansible.builtin.debug: 
-      msg: "status : {{ command }}"
+      msg: "status: {{ command }}"
        
