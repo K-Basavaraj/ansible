@@ -3,10 +3,10 @@
   connection: yes
   tasks: 
    - name: execute the commands
-     ansible.builtin.command: ls -ltr /home/ec2-user
+     ansible.builtin.command: ls -ltr /home/ec2-user/practice
      register: command
     
    - name: print the user info 
      ansible.builtin.debug: 
-      msg: " status : {{ command }}"
+      msg: "status : {{ command }}"
        
