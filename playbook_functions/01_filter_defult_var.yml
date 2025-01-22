@@ -31,3 +31,11 @@
      ansible.builtin.debug:
       msg: "min value in firstlist {{ lista | min }}, max value in second list {{ listb | max }}"
       
+   - name: convert map to list 
+     vars:
+      fruits: 
+       name: "Apple"
+       color: "red"
+       count: 12
+     ansible.builtin.debug:
+      msg: "{{ fruits | dic2items}}" #dic2iteams will convert map to list
