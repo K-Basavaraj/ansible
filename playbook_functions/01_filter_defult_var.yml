@@ -39,3 +39,12 @@
        count: 12
      ansible.builtin.debug:
       msg: "{{ fruits | dict2items }}" #dict2iteams will convert map to list
+   
+   - name: convert list to map
+     vars: 
+      fruits:
+       - { "Key": "name","value": "Apple" }
+       - { "key": "color","value": "Red" }
+       - { "key": "count","value": 12 }
+     ansible.builtin.debug:
+      msg: "{{ fruits | dict2item }}" #here also dict2iteams will convert list to map 
