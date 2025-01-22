@@ -8,5 +8,13 @@
     
    - name: print the info 
      ansible.builtin.debug: 
-      msg: "status: {{ command }}"
-       
+      msg: "status: {{ command }}" # this is sucess
+   
+   - name: execute the commands
+     ansible.builtin.command: ls -ltr /home/ec2-user/practice > output.txt
+     register: command_redi
+    
+    - name: print the info 
+     ansible.builtin.debug: 
+      msg: "status: {{ command_redi }}" # this is fail beacuse used redirectors is used by shell not command.
+   
