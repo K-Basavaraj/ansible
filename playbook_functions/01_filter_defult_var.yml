@@ -38,4 +38,4 @@
        color: "red"
        count: 12
      ansible.builtin.debug:
-      msg: "{{ fruits | dic2items}}" #dic2iteams will convert map to list
+      msg: "{{ fruits | dict2items }}" #dict2iteams will convert map to list
