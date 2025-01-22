@@ -10,9 +10,9 @@
      ansible.builtin.debug: 
       msg: "status: {{ command }}" # this is sucess
    
-   - name: execute the commands
-     ansible.builtin.command: ls -ltr /home/ec2-user/practice > output.txt
-     register: command_redi
+  #  - name: execute the commands
+  #    ansible.builtin.command: ls -ltr /home/ec2-user/practice > output.txt
+  #    register: command_redi
     
   #  - name: print the info 
   #    ansible.builtin.debug: 
@@ -20,6 +20,6 @@
   #     #"rc": 2, "start": "2025-01-22 17:08:24.695481", "stderr": "ls: cannot access '>'
   
    - name: execute the shell 
-     ansible.builtin.shell: ls -ltr /home/ec2-user/practice > output.txt
+     ansible.builtin.shell: ls -ltr /tmp/output.txt > output.txt
      register: command_redi # it will work as login to the server and execute command inside
     # command module, just issues the command
