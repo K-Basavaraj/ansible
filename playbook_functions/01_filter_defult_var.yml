@@ -42,9 +42,9 @@
    
    - name: convert list to map
      vars: 
-      fruits:
+      fruit:
        - { "Key": "name","value": "Apple" }
        - { "key": "color","value": "Red" }
        - { "key": "count","value": 12 }
      ansible.builtin.debug:
-      msg: "{{ fruits | items2dict }}" #items2dict will convert list to map 
+      msg: "{{ fruit | items2dict }}" #items2dict will convert list to map 
