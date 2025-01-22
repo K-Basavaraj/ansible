@@ -25,8 +25,8 @@
     # command module, just issues the command
 
    - name: check the process
-    ansible.builtin.shell: ps -ef | grep ssh
-    register: output   # it will sucess because using shell where it have access pipe |
+     ansible.builtin.shell: ps -ef | grep ssh
+     register: output   # it will sucess because using shell where it have access pipe |
 
   - name: check the process
     ansible.builtin.command: ps -ef | grep ssh
