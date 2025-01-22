@@ -43,7 +43,7 @@
    - name: convert list to map
      vars: 
       fruit:
-       - { "Key": "name","value": "Apple" }
+       - { "key": "name","value": "Apple" }
        - { "key": "color","value": "Red" }
        - { "key": "count","value": 12 }
      ansible.builtin.debug:
