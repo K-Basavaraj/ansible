@@ -10,7 +10,7 @@
       - mysql
       - backend
       - frontend
-    zone: basavadevops81s.online
+    zone: 905418204391.realhandsonlabs.net
   tasks:
     - name: create ec2-instance
       amazon.aws.ec2_instance:
