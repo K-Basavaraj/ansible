@@ -7,9 +7,9 @@
     sg_id: "sg-052c3b88200c4966b"
     ami_id: "ami-09c813fb71547fc4f"
     instances:
-     - mysql
-     - backend
-     - frontend
+      - mysql
+      - backend
+      - frontend
   tasks:
     - name: create ec2-instance
       amazon.aws.ec2_instance:
@@ -20,3 +20,7 @@
         image_id: "{{ ami_id }}"
       loop: "{{ instances }}"
       register: ec2_instances
+
+    - name: print the output
+      ansible.builtin.debug:
+        msg: "{{ ec2_instaces }}"
