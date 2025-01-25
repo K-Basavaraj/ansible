@@ -1,7 +1,17 @@
 - name: install mysql server on db server
   hosts: database
   become: yes
+  vars:
+   mysql_root_password: ExpenseApp@1
+   login_host: mysql.730335266755.realhandsonlabs.net
   tasks: 
+    # - name: ansible to install python reqierd lib 
+    #   ansible.builtin.pip:
+    #    name: 
+    #     - botocore
+    #     - boto3
+    #     executable: pip3.9
+
     - name: install mysql server
       ansible.builtin.package:
         name: mysql-server
@@ -12,3 +22,15 @@
         name: mysqld
         state: started
         enabled: yes
+
+    - name: connect mysql-server
+      community.mysql.mysql_info:
+        login_user: root
+        login_password: "{{ mysql_root_password }}"
+        login_host: "{{ login_host}}"
+      ignore_errors: true
+      register: mysql_info
+    
+    - name: print mysql_info
+      ansible.builtin.debug:
+       msg: "{{ mysql_info }}"
