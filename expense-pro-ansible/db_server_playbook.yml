@@ -36,4 +36,10 @@
 
     - name: setup root password
       ansible.builtin.command: "mysql_secure_installation --set-root-pass {{ mysql_root_password }}"
-      when: mysql_info.failed is true           #here its boolen so used "is" if its string we can use "="
+      when: mysql_info.failed is true or mysql_info.changed is false           #here its boolen so used "is" if its string we can use "="
+
+    - name: Debug MySQL info details
+      ansible.builtin.debug:
+       msg:
+        - "Failed: {{ mysql_info.failed | default('not set') }}"
+        - "Content: {{ mysql_info | default('not set') }}"
