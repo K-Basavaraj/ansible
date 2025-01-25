@@ -10,7 +10,7 @@
       - mysql
       - backend
       - frontend
-    #zone: 730335266755.realhandsonlabs.net 
+    zone: 730335266755.realhandsonlabs.net 
   tasks:
     - name: create ec2-instance
       amazon.aws.ec2_instance:
@@ -26,18 +26,18 @@
       ansible.builtin.debug:
         msg: "{{ ec2_instances }}"
 
-    #    #private IP R53
-    # - name: create route53 records
-    #   amazon.aws.route53:
-    #     state: present
-    #     zone: "{{ zone }}"
-    #     record: "{{ item.item }}.{{ zone }}"
-    #     type: A
-    #     ttl: 1
-    #     value: "{{ item.instances[0].private_ip_address }}"
-    #     wait: true
-    #     overwrite: true
-    #   loop: "{{ ec2_instances.results }}"
+       #private IP R53
+    - name: create route53 records
+      amazon.aws.route53:
+        state: present
+        zone: "{{ zone }}"
+        record: "{{ item.item }}.{{ zone }}"
+        type: A
+        ttl: 1
+        value: "{{ item.instances[0].private_ip_address }}"
+        wait: true
+        overwrite: true
+      loop: "{{ ec2_instances.results }}"
     
     # - name: create r53 public record for frontend
     #   amazon.aws.route53:
