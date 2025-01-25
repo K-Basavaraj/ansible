@@ -1,45 +1,78 @@
-- name: install mysql server on db server
-  hosts: database
+# - name: install mysql server on db server
+#   hosts: database
+#   become: yes
+#   vars:
+#    mysql_root_password: ExpenseApp@1
+#    login_host: mysql.730335266755.realhandsonlabs.net
+#   tasks: 
+#     - name: ansible to install python reqierd lib 
+#       ansible.builtin.pip:
+#        name: 
+#        - PyMySQL
+#        executable: pip3.9
+
+#     - name: install mysql server
+#       ansible.builtin.package:
+#         name: mysql-server
+#         state: present
+
+#     - name: start mysql service
+#       ansible.builtin.service:
+#         name: mysqld
+#         state: started
+#         enabled: yes
+
+#     - name: connect mysql-server
+#       community.mysql.mysql_info:
+#         login_user: root
+#         login_password: "{{ mysql_root_password }}"
+#         login_host: "{{ login_host}}"
+#       register: mysql_info
+#       ignore_errors: true
+    
+#     - name: print mysql_info
+#       ansible.builtin.debug:
+#        msg: "{{ mysql_info }}"
+
+#     - name: setup root password
+#       ansible.builtin.command: "mysql_secure_installation --set-root-pass {{ mysql_root_password }}"
+#       when: mysql_info.failed is true  #here its boolen so used "is" if its string we can use "="
+
+- name: mysql configuration
+  hosts: mysql
   become: yes
   vars:
-   mysql_root_password: ExpenseApp@1
-   login_host: mysql.730335266755.realhandsonlabs.net
-  tasks: 
-    - name: ansible to install python reqierd lib 
-      ansible.builtin.pip:
-       name: 
-       - PyMySQL
-       executable: pip3.9
+    mysql_root_password: ExpenseApp@1
+    login_host: mysql.730335266755.realhandsonlabs.net
+  tasks:
+  - name: ansible to install pymysql
+    ansible.builtin.pip:
+      name:
+      - PyMySQL
+      executable: pip3.9
+  - name: install MySQL Server
+    ansible.builtin.package:
+      name: mysql-server
+      state: present
 
-    - name: install mysql server
-      ansible.builtin.package:
-        name: mysql-server
-        state: present
+  - name: start mysql server
+    ansible.builtin.service:
+      name: mysqld
+      state: started
+      enabled: yes
 
-    - name: start mysql service
-      ansible.builtin.service:
-        name: mysqld
-        state: started
-        enabled: yes
+  - name: connect mysql server
+    community.mysql.mysql_info:
+      login_user: root
+      login_password: "{{ mysql_root_password }}"
+      login_host: "{{ login_host }}"
+    ignore_errors: true
+    register: mysql_info
 
-    - name: connect mysql-server
-      community.mysql.mysql_info:
-        login_user: root
-        login_password: "{{ mysql_root_password }}"
-        login_host: "{{ login_host}}"
-      register: mysql_info
-      ignore_errors: true
-    
-    - name: print mysql_info
-      ansible.builtin.debug:
-       msg: "{{ mysql_info }}"
+  - name: print mysql info
+    ansible.builtin.debug:
+      msg: "{{ mysql_info }}"
 
-    - name: setup root password
-      ansible.builtin.command: "mysql_secure_installation --set-root-pass {{ mysql_root_password }}"
-      when: mysql_info.failed is true or mysql_info.changed is false           #here its boolen so used "is" if its string we can use "="
-
-    - name: Debug MySQL info details
-      ansible.builtin.debug:
-       msg:
-        - "Failed: {{ mysql_info.failed | default('not set') }}"
-        - "Content: {{ mysql_info | default('not set') }}"
+  - name: setup MySQL root password
+    ansible.builtin.command: "mysql_secure_installation --set-root-pass {{ mysql_root_password }}"
+    when: mysql_info.failed is true
