@@ -27,8 +27,8 @@
         login_user: root
         login_password: "{{ mysql_root_password }}"
         login_host: "{{ login_host}}"
-      ignore_errors: true
       register: mysql_info
+      ignore_errors: true
     
     - name: print mysql_info
       ansible.builtin.debug:
