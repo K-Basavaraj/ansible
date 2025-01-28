@@ -3,7 +3,7 @@
   become: yes
   vars:
    mysql_root_password: ExpenseApp@1
-   login_host: mysql.381492126797.realhandsonlabs.net
+   login_host: mysql.851725300754.realhandsonlabs.net
   tasks: 
     - name: ansible to install python reqierd lib 
       ansible.builtin.pip:
