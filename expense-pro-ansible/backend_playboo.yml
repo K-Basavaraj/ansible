@@ -10,9 +10,40 @@
 
    - name: install nodejs
      ansible.builtin.package:
-      name: nodejs
+      name: "{{ item }}"
       state: present
+    loop:
+      - nodejs
+      - npm
+      - mysql
 
    - name: create expense user
      ansible.builtin.user:
       name: expense
+
+   - name: create app directory 
+     ansible.built.file:
+      path: /app
+      state: directory
+   
+   - name: Download the application code to created app directory
+     ansible.builtin.get_url:
+      url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
+      dest: /tmp/backend.zip
+   
+   - name: extract the code
+     ansible.builtin.unarchive:
+      src: /tmp/backend.zip #by defult ansible thinks this is in ansible server
+      dest: /app
+      remote_src: yes #its like no need to move, already this derictory exist in the remote.
+
+   - name: install dependencies
+     ansible.builtin.command: npm install 
+       args:
+        chdir: /app
+   
+   - name: Copy file 
+     ansible.builtin.copy:
+      src: backend.service
+      dest: /etc/systemd/system/backend.service
+
