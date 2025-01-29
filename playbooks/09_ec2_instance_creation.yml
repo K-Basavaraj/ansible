@@ -3,14 +3,14 @@
   connection: local
   vars:
     instance_type: "t3.micro"
-    subnet_id: subnet-08ab12af79071d6e8
-    sg_id: "sg-0fa8547dcdd92b9f3"
+    subnet_id: subnet-020aca7c8b59df0ec
+    sg_id: "sg-0516a37899ab1eab3"
     ami_id: "ami-09c813fb71547fc4f"
     instances:
       - mysql
       - backend
       - frontend
-    zone: 851725300754.realhandsonlabs.net 
+    zone: 611110754189.realhandsonlabs.net  
   tasks:
     - name: ansible to install python reqierd lib 
       ansible.builtin.pip:
