@@ -25,7 +25,7 @@
 - name: Download the code
   ansible.builtin.get_url:
     url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
-    des: /tmp/backend.zip
+    dest: /tmp/backend.zip
 
 - name: extract the code
   ansible.builtin.unarchive:
