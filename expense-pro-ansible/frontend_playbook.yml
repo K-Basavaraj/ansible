@@ -28,19 +28,19 @@
       url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip
       dest: /tmp/frontend.zip 
 
-  - name: extract the code 
-    ansible.builtin.unarchive:
+   - name: extract the code 
+     ansible.builtin.unarchive:
       src: /tmp/frontend.zip #by defult ansible thinks this is in ansible server
       dest: /usr/share/nginx/html
       remote_src: yes #its like no need to move.
 
-  - name: copy the expens conf file 
-    ansible.builtin.copy:
-     src: expense.conf
-     dest: /etc/nginx/default.d/expense.conf
+   - name: copy the expens conf file 
+     ansible.builtin.copy:
+      src: expense.conf
+      dest: /etc/nginx/default.d/expense.conf
 
-  - name: restart nginx
-    ansible.builtin.service:
-     name: nginx
-     state: restarted
+   - name: restart nginx
+     ansible.builtin.service:
+      name: nginx
+      state: restarted
 
