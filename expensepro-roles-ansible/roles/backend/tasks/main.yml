@@ -1,0 +1,66 @@
+- name: disable defult nodejs
+  ansible.builtin.command: dnf module disable nodejs -y
+
+- name: enable nodejs 20
+  ansible.builtin.command: dnf module enable nodejs:20 -y
+
+- name: install nodejs
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - nodejs
+    - npm
+    - mysql
+
+- name: create exense user
+  ansible.builtin.user:
+    name: expense
+
+- name: create app directory
+  ansible.builtin.file:
+    path: /app
+    state: directory
+
+- name: Download the code
+  ansible.builtin.get_url:
+    url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
+    des: /tmp/backend.zip
+
+- name: extract the code
+  ansible.builtin.unarchive:
+    src: /tmp/backend.zip
+    dest: /app
+    remote_src: yes
+
+- name: install dependencies
+  ansible.builtin.command: npm install
+  args:
+    chdir: /app
+
+- name: copy backend service file # copy works for only files not for varibles so we are using .template insted of .copy
+  ansible.builtin.template:
+    src: backend.service.j2
+    dest: /etc/systemd/system/backend.service
+
+- name: require lib to import mysql
+  ansible.builtin.pip:
+    name:
+      - PyMySQL
+      - cryptography
+    executable: pip3.9
+
+- name: import mysql data
+  community.mysql.mysql_db:
+    login_user: root
+    login_password: "{{ mysql_root_password }}"
+    login_host: "{{ login_host}}"
+    name: all
+    state: import
+    target: /app/schema/backend.sql
+
+- name: demon reload and start
+  ansible.builtin.systemd_service:
+    state: restarted
+    daemon_reload: true
+    name: backend
