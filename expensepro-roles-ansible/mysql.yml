@@ -1,0 +1,5 @@
+- name: configure mysql server
+  hosts: database
+  become: yes
+  roles:
+   - mysql # it will go to role folder and check for mysql and it will load all from there
