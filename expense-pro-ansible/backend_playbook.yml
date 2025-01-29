@@ -1,6 +1,10 @@
 - name: configure backend server
   hosts: backend
   become: yes
+  vars:
+   mysql_root_password: ExpenseApp@1
+   login_host: mysql.851725300754.realhandsonlabs.net
+
   tasks:
    - name: disable defult nodejs
      ansible.builtin.command: dnf module disable nodejs -y
@@ -15,7 +19,7 @@
      loop:
       - nodejs
       - npm
-      - mysql
+      - mysql  #line54 its required
 
    - name: create expense user
      ansible.builtin.user:
@@ -42,8 +46,29 @@
      args:
       chdir: /app
    
-   - name: Copy file 
+   - name: Copy backend service file
      ansible.builtin.copy:
       src: backend.service
       dest: /etc/systemd/system/backend.service
 
+   - name: ansible to install python reqierd lib for below step step dependencies
+     ansible.builtin.pip:
+      name: 
+      - PyMySQL
+      - cryptography
+      executable: pip3.9
+
+   - name: import mysql data
+     community.mysql.mysql_db:
+       login_user: root
+       login_password: "{{ mysql_root_password }}"
+       login_host: "{{ login_host}}"
+       name: all
+       state: import
+       target: /app/schema/backend.sql
+
+   - name: demon reload and start
+     ansible.builtin.systemd_service:
+      state: restarted
+      daemon_reload: true
+      name: backend
