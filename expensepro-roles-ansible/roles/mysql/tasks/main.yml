@@ -1,9 +1,9 @@
 - name: ansible to install python required lib 
   ansible.builtin.pip:
    name: 
-    - PyMySQL
-    - cryptography
-    executable: pip3.9
+   - PyMySQL
+   - cryptography
+   executable: pip3.9
 
 - name: install mysql server
   ansible.builtin.package:
