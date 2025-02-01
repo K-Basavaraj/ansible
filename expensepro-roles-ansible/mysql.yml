@@ -1,5 +1,7 @@
 - name: configure mysql server
   hosts: database
-  become: yes
+  become: yes  #this is for remote server sudo access 
+  vars_file:
+   - /var/expense/credentials_mysql.yml #but this placed in ansible server 
   roles:
    - mysql # it will go to role folder and check for mysql and it will load all from there
