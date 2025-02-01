@@ -1,5 +1,7 @@
 - name: setting up backend
   hosts: backend
   become: yes 
+  vars_files:
+   - /var/expense/credentials_mysql.yml 
   roles:
    - backend
