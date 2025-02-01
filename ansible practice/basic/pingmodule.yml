@@ -1,0 +1,6 @@
+- name: check the connection 
+  hosts: node1
+  tasks:
+   - name: connect to host target server 
+     ansible.builtin.ping:
+      
