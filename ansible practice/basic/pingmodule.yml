@@ -1,4 +1,4 @@
-- name: check the connection 
+- name: ping the server 
   hosts: node1
   tasks:
    - name: connect to host target server 
