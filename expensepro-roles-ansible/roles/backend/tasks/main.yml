@@ -34,11 +34,15 @@
 #     remote_src: yes
 
 - name: import task from common role
+  tags:
+   - deployment
   ansible.builtin.import_role:
     name: common
     tasks_from: app_pre_req
 
 - name: install dependencies
+  tags: 
+   - deployment
   ansible.builtin.command: npm install
   args:
     chdir: /app
@@ -65,6 +69,8 @@
     target: /app/schema/backend.sql
 
 - name: demon reload and start
+  tags: 
+   - deployment
   ansible.builtin.systemd_service:
     state: restarted
     daemon_reload: true
