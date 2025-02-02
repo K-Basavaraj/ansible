@@ -17,6 +17,7 @@
    - name: start serivces 
      ansible.builtin.service:
        name: "{{ item }}"
+       loop:
         - nginx
         - mysqld      
        state: started
