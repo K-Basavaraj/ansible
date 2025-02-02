@@ -2,7 +2,7 @@
   hosts: local 
   connection: local 
   tasks:
-   - name: setting llops 
+   - name: setting loops 
      ansible.builtin.debug: 
       msg: "{{ item }}"
      loop:
@@ -10,3 +10,18 @@
       - suresh 
       - Prabha
       - eshwar
+
+- name: about loops 
+  hosts: node1 
+  become: yes 
+  tasks:
+   - name: install nginx,mysql,postfix and httpd 
+     ansible.builtin.package:
+      name: "{{ item }}"
+      state: present 
+     loop:
+      - nginx 
+      - mysql 
+      - postfix 
+      - httpd 
+      
