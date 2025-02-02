@@ -1,0 +1,20 @@
+- name: Play1 
+  hosts: node1
+  tasks:
+   - name: connect to host target server 
+     ansible.builtin.ping:
+
+   - name: PLAY-01 
+     ansible.builtin.debug: 
+      msg: "This is from Play-01 and task-01"
+
+
+- name: play2 
+  hosts: node2 
+  tasks:
+   - name: connect to host target server 
+     ansible.builtin.ping:
+
+   - name: play-02
+     ansible.builtin.debug:
+      msg: "This is from Play-02 and task-02"
