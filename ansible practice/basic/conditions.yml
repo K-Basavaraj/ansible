@@ -17,6 +17,28 @@
 
 
 # regex_replace('[^0-9]', '')
-
 # This removes any non-numeric characters (e.g., spaces, dashes).
 # Ensures only digits are counted.
+# Method Behavior
+# fail:Stops execution immediately if the input is incorrect. Useful for enforcing strict validation.
+# debug:Only prints a message but does not stop execution. The playbook continues even with incorrect input.
+#=================================================================================================================================
+- name: check the given number is greater or less than 100 
+  hosts: local
+  connection: local 
+  vars:
+   num: 100 
+  vars_prompt:
+   - name: NUMBER
+     prompt: please eneter you number 
+     private: false 
+  tasks:
+   - name: check the given num is less or greter 
+     ansible.builtin.debug:
+      msg: your given number is {{ NUMBER }} is less than 100 
+     when: NUMBER | int < num
+    
+   - name: print the number 
+     ansible.builtin.debug:
+      msg: your given number is {{ NUMBER }} is greater than 100 
+     when: NUMBER | int > num
