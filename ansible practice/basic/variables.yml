@@ -1,3 +1,10 @@
+- name: varibles from args
+  hosts: node1
+  tasks: 
+   - name: vars args
+     ansible.builtin.debug: 
+      msg: "Hello {{NAME}}, Good {{GREATING}}"
+
 - name: variables to print
   hosts: node1 
   vars:
@@ -19,7 +26,7 @@
    - name: Mobile_num 
      prompt: "Enter your mobile number"
      private: true 
-     
+
   tasks:
    - name: userinfo 
      ansible.builtin.debug:
