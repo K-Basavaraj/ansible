@@ -17,13 +17,11 @@
      private: false
 
    - name: Mobile_num 
-     promt: "Enter your mobile number"
+     prompt: "Enter your mobile number"
      private: true 
 
    - name: userinfo 
      ansible.builtin.debug:
       msg: "your mobile name is {{ MOBILE_NAME }}, Your Mobile Num is {{ Mobile_num }}"
-
-
 
   
