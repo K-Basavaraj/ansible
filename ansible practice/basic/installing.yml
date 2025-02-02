@@ -1,0 +1,23 @@
+- name: install nginx in node1 and mysqlserver in node2  
+  hosts: servers
+  become: yes 
+  tasks:
+   - name: install nginx in node 
+     ansible.builtin.package: 
+      name: nginx
+      state: present 
+     when: "'node1' in group_names" #group_names is an Ansible variable that contains the groups the current host belongs to
+   
+   - name: install nginx in node 
+     ansible.builtin.package: 
+      name: mysql-server
+      state: present 
+     when: "'node2' in group_names"
+
+   - name: start serivces 
+     ansible.builtin.service:
+       name: "{{ item }}"
+        - nginx
+        - mysqld      
+       state: started
+       enabled: yes 
