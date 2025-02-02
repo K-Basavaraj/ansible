@@ -1,0 +1,22 @@
+- name: Validate Phone Number Length
+  hosts: node1
+  vars_prompt:
+    - name: PHONE_NUMBER
+      prompt: "Please enter your 10-digit phone number"
+      private: false
+
+  tasks:
+    - name: Validate phone number length
+      fail:
+        msg: "Please provide your number exactly 10 digits."
+      when: PHONE_NUMBER | regex_replace('[^0-9]', '') | length != 10
+
+    - name: Print valid phone number
+      ansible.builtin.debug:
+        msg: "Your entered phone number {{ PHONE_NUMBER }} is valid."
+
+
+# regex_replace('[^0-9]', '')
+
+# This removes any non-numeric characters (e.g., spaces, dashes).
+# Ensures only digits are counted.
