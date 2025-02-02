@@ -1,0 +1,7 @@
+- name: gathing facts 
+  hosts: node1 
+  bacome: yes 
+  tasks:
+   - name : print the facts 
+     ansible.builtin.debug:
+      msg: "{{ ansible_facts }}"
