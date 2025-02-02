@@ -1,6 +1,6 @@
-- name: gathing facts 
+- name: gathering facts 
   hosts: node1 
-  bacome: yes 
+  become: yes 
   tasks:
    - name : print the facts 
      ansible.builtin.debug:
