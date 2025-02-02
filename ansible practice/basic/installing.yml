@@ -16,9 +16,11 @@
 
    - name: start serivces 
      ansible.builtin.service:
-       name: "{{ item }}"
-       loop:
-        - nginx
-        - mysqld      
+       name: "{{ item }}"   
        state: started
        enabled: yes 
+     loop:
+      - nginx
+      - mysqld   
+     when: > 
+       ('node1' in group_names and item == "nginx") or ('node2' in group_names and item == "mysqld")
