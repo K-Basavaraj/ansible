@@ -18,7 +18,7 @@
    - name: install nginx,mysql
      ansible.builtin.package:
       name: "{{ item }}"
-      state: present 
+      state: absent 
      loop:
       - nginx 
       - mysql 
@@ -32,6 +32,6 @@
      name: "{{ item.name }}"
      state: "{{ item.state }}"
     loop:
-     - { name: 'postfix', state: 'present' }
-     - { name: 'httpd', state: 'present' }
+     - { name: 'postfix', state: 'absent' }
+     - { name: 'httpd', state: 'absent' }
       
