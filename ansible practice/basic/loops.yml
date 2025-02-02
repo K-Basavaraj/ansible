@@ -15,13 +15,23 @@
   hosts: node1 
   become: yes 
   tasks:
-   - name: install nginx,mysql,postfix and httpd 
+   - name: install nginx,mysql
      ansible.builtin.package:
       name: "{{ item }}"
-      state: absent
+      state: present 
      loop:
       - nginx 
       - mysql 
-      - postfix 
-      - httpd 
+      
+- name: installing packages 
+  hosts: node2 
+  become: yes 
+  tasks:
+  - name: install postfix and httpd 
+    ansible.builtin.package:
+     name: "{{ item.name }}"
+     state: "{{ item.state }}"
+    loop:
+     - { name: 'postfix', state: 'present' }
+     - { name: 'httpd', state: 'present' }
       
