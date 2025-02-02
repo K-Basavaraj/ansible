@@ -5,3 +5,19 @@
    - name : print the facts 
      ansible.builtin.debug:
       msg: "{{ ansible_facts }}"
+
+- name: install nginx based on distros 
+  hosts: node2 
+  become: yes 
+  tasks: 
+   - name: install nginx in rhel
+     ansible.builtin.dnf:
+      name: nginx 
+      state: present 
+     when: ansible_os_family == "RedHat"
+
+   - name: install nginx in ubuntu
+     ansible.builtin.apt:
+      name: nginx 
+      state: present 
+     when: ansible_os_family == "Debian"
